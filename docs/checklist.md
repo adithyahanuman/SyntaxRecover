@@ -86,13 +86,13 @@ You already have the literature review, problem statement, objectives and archit
 *Done when:* three different errors produce correct `ErrorEvent`s.
 
 ### 2.4 Candidate Generator (A and S) — about 6 days
-- [ ] **Insert** from the expected set, including placeholders for `IDENT` / literals with penalty
-- [ ] **Delete** (single token first, then `delete_span`)
-- [ ] **Replace** from the expected set
-- [ ] **Backtrack window:** also generate candidates positioned before the previous token
-- [ ] **Compose** up to 2 edits with a beam; **deduplicate** equivalent candidates
-- [ ] Give each candidate an id (R1, R2, …) and a one-line description
-- [ ] Tests: slide example yields at least the Insert `;`, Delete `if`, and a Replace; candidate count stays bounded
+- [x] **Insert** from the expected set, including placeholders for `IDENT` / literals with penalty
+- [x] **Delete** (single token first, then `delete_span`)
+- [x] **Replace** from the expected set
+- [x] **Backtrack window:** also generate candidates positioned before the previous token
+- [x] **Compose** up to 2 edits with a beam; **deduplicate** equivalent candidates
+- [x] Give each candidate an id (R1, R2, …) and a one-line description
+- [x] Tests: slide example yields at least the Insert `;`, Delete `if`, and a Replace; candidate count stays bounded
 
 *Done when:* candidate lists are correct and bounded on all golden inputs.
 
