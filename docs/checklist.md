@@ -78,10 +78,10 @@ You already have the literature review, problem statement, objectives and archit
 *Done when:* valid programs parse to ASTs; `feed` returns False on bad input without changing state; `expected()` matches your hand-computed sets.
 
 ### 2.3 Error Diagnoser (A) — about 2 days
-- [ ] On the first `feed` failure, build `ErrorEvent` (token, previous token, line, col, expected set, optional context)
-- [ ] Handle `EOF`-time errors (unexpected end of file)
-- [ ] Pretty-print the source line with a caret
-- [ ] Tests: slide example gives unexpected `if` at line 2, expected set contains `;`
+- [x] On the first `feed` failure, build `ErrorEvent` (token, previous token, line, col, expected set, optional context)
+- [x] Handle `EOF`-time errors (unexpected end of file)
+- [x] Pretty-print the source line with a caret
+- [x] Tests: slide example gives unexpected `if` at line 2, expected set contains `;`
 
 *Done when:* three different errors produce correct `ErrorEvent`s.
 
