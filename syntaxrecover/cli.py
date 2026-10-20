@@ -94,12 +94,15 @@ def recover_all(
     i = 0
     events: List[RecoveryEvent] = []
     last_commit_idx = -999
+    state_history: dict[int, ParserState] = {}
 
     while i < len(tokens):
         tok = tokens[i]
 
         if tok.type == TT.EOF and state.at_accept():
             break
+
+        state_history[i] = state.clone()
 
         if state.feed(tok):
             i += 1
@@ -108,7 +111,7 @@ def recover_all(
         # Syntax error encountered at index i
         err_ev = diagnose(state, tokens, i, source=source)
         all_cands = generate_candidates(err_ev, state, tokens, cfg)
-        evaluated_cands = validate_all(all_cands, state, tokens, cfg)
+        evaluated_cands = validate_all(all_cands, state, tokens, cfg, state_history=state_history)
         ranked = rank_candidates(evaluated_cands, cfg)
 
         if not ranked:
@@ -145,11 +148,12 @@ def recover_all(
             break
 
     repaired_code = reconstruct_source(tokens)
+    repaired_valid, _, _ = adapter.parse_tokens(tokens)
     return RecoveryResult(
         tokens=tokens,
         events=events,
         repaired_source=repaired_code,
-        success=len(events) == 0 or state.at_accept(),
+        success=repaired_valid,
     )
 
 

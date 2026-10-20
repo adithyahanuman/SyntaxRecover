@@ -116,66 +116,66 @@ You already have the literature review, problem statement, objectives and archit
 ## Phase 3: Validation, Ranking, Logging, Resume  *(about 3 weeks)*
 
 ### 3.1 Validation Sandbox (S) — about 5 days
-- [ ] Clone-and-replay over a *virtual* token view (real stream untouched)
-- [ ] Compute `progress` up to `P_max`; apply `K_min` lookahead rule
-- [ ] Accept stream that reaches `EOF` cleanly even if shorter than `K_min`
-- [ ] Record failure reasons ("parser stalls after 0 tokens", "re-triggers error at token X")
-- [ ] Test that the live parser state is bit-for-bit unchanged after validating 100 candidates
-- [ ] Tests: R2 (delete `if`) is invalid; R1 is valid with progress close to the hand calculation
+- [x] Clone-and-replay over a *virtual* token view (real stream untouched)
+- [x] Compute `progress` up to `P_max`; apply `K_min` lookahead rule
+- [x] Accept stream that reaches `EOF` cleanly even if shorter than `K_min`
+- [x] Record failure reasons ("parser stalls after 0 tokens", "re-triggers error at token X")
+- [x] Test that the live parser state is bit-for-bit unchanged after validating 100 candidates
+- [x] Tests: R2 (delete `if`) is invalid; R1 is valid with progress close to the hand calculation
 
 *Done when:* sandbox results match your hand-computed numbers from R1.4.
 
 ### 3.2 Ranker (A) — about 4 days
-- [ ] Implement Edit Cost, Progress, Structure penalty
-- [ ] Combine into the score; deterministic tie-break
-- [ ] Load weights from config
-- [ ] Tests: the three slide candidates rank R1 < R3 with the documented numbers; tie-break gives identical order across 100 runs
-- [ ] Property test: ranking is a total order (no ties left unresolved)
+- [x] Implement Edit Cost, Progress, Structure penalty
+- [x] Combine into the score; deterministic tie-break
+- [x] Load weights from config
+- [x] Tests: the three slide candidates rank R1 < R3 with the documented numbers; tie-break gives identical order across 100 runs
+- [x] Property test: ranking is a total order (no ties left unresolved)
 
 *Done when:* ranker output equals `docs/ranking_spec.md` worked examples.
 
 ### 3.3 Synchronize Operation, done properly (A and S) — about 5 days
 *This is the hardest piece; give it its own time.*
-- [ ] Skip to the next sync token (`;`, `}`, statement-start keywords)
-- [ ] `unwind_to_sync`: pop parser state until the sync token can be accepted
-- [ ] Guarantee progress: always consumes at least one token; worst case skips to `EOF`
-- [ ] Cost = 1 + skipped tokens; structure penalty counts skipped tokens
-- [ ] Tests: unbalanced braces, garbage in the middle of a function, error right before `EOF`
+- [x] Skip to the next sync token (`;`, `}`, statement-start keywords)
+- [x] `unwind_to_sync`: pop parser state until the sync token can be accepted
+- [x] Guarantee progress: always consumes at least one token; worst case skips to `EOF`
+- [x] Cost = 1 + skipped tokens; structure penalty counts skipped tokens
+- [x] Tests: unbalanced braces, garbage in the middle of a function, error right before `EOF`
 
 *Done when:* Sync never loops forever and always leaves a state that parses on.
 
 ### 3.4 Commit, Resume and Cascade Guard (A) — about 3 days
-- [ ] Apply the winning edits to the real token list and live parser
-- [ ] Mark inserted tokens `synthetic`; propagate to AST nodes
-- [ ] Never reset the parser between errors
-- [ ] Termination guard (`max_errors`, must consume at least one original token per commit)
-- [ ] Suppression window: tag follow-on errors `possibly_secondary`
-- [ ] Tests: files with 2, 3 and 5 errors give 2, 3 and 5 independent events
+- [x] Apply the winning edits to the real token list and live parser
+- [x] Mark inserted tokens `synthetic`; propagate to AST nodes
+- [x] Never reset the parser between errors
+- [x] Termination guard (`max_errors`, must consume at least one original token per commit)
+- [x] Suppression window: tag follow-on errors `possibly_secondary`
+- [x] Tests: files with 2, 3 and 5 errors give 2, 3 and 5 independent events
 
 *Done when:* multi-error files are diagnosed completely in one run.
 
 ### 3.5 Explainable Logger (S) — about 4 days
-- [ ] `RecoveryEvent` records and JSON serialization
-- [ ] Text renderer with caret, expected set, all candidates with scores, chosen repair, reason
-- [ ] Template table for explanations keyed by (operation, token, context)
-- [ ] `--json` and `--repaired` outputs
-- [ ] Tests: golden log for the slide example matches your hand-written log from R1.5
+- [x] `RecoveryEvent` records and JSON serialization
+- [x] Text renderer with caret, expected set, all candidates with scores, chosen repair, reason
+- [x] Template table for explanations keyed by (operation, token, context)
+- [x] `--json` and `--repaired` outputs
+- [x] Tests: golden log for the slide example matches your hand-written log from R1.5
 
 *Done when:* the output for the slide example contains the same information as slides "Candidate Ranking Matrix" and "Explainable Diagnostic Logs".
 
 ### 3.6 Hardening (A and S) — about 3 days
-- [ ] Property tests: recovery terminates; repaired stream parses; same input gives same output
-- [ ] 30+ golden tests across error types
-- [ ] Fuzz: random token deletions/insertions on valid programs never crash the engine
-- [ ] Profile; remove obvious hot spots (state cloning cost, repeated expected-set computation)
+- [x] Property tests: recovery terminates; repaired stream parses; same input gives same output
+- [x] 30+ golden tests across error types
+- [x] Fuzz: random token deletions/insertions on valid programs never crash the engine
+- [x] Profile; remove obvious hot spots (state cloning cost, repeated expected-set computation)
 
 *Done when:* test suite green; no crashes in a 10,000-input fuzz run.
 
 **Milestone M3 (Phase 3 review demo):**
-- [ ] Sandbox + ranking + logger working together
-- [ ] Live demo: broken file in, ranked candidates and explanation out, repaired file out
-- [ ] Multi-error file handled in a single run
-- [ ] First numbers from a small experiment (even 50 files) to show the direction of results
+- [x] Sandbox + ranking + logger working together
+- [x] Live demo: broken file in, ranked candidates and explanation out, repaired file out
+- [x] Multi-error file handled in a single run
+- [x] First numbers from a small experiment (even 50 files) to show the direction of results
 
 ---
 

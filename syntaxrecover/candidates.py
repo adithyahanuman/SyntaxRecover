@@ -99,11 +99,19 @@ class Candidate:
             for ins_tok in ins_map[len(tokens)]:
                 result.append(ins_tok)
 
-        # Re-index virtual tokens
+        # Produce fresh virtual token copies with updated indices (never mutate original tokens)
+        virtual_tokens: List[Token] = []
         for idx, t in enumerate(result):
-            t.index = idx
+            virtual_tokens.append(Token(
+                type=t.type,
+                text=t.text,
+                line=t.line,
+                col=t.col,
+                index=idx,
+                synthetic=t.synthetic,
+            ))
 
-        return result
+        return virtual_tokens
 
 
 def _terminal_to_token(term: str, at_line: int, at_col: int) -> Token:
