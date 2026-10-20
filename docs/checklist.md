@@ -97,19 +97,19 @@ You already have the literature review, problem statement, objectives and archit
 *Done when:* candidate lists are correct and bounded on all golden inputs.
 
 ### 2.5 End-to-End Skeleton (A and S) — about 3 days
-- [ ] Controller loop from `design.md` §6 with a **temporary** policy: take the first valid candidate (no ranking yet)
-- [ ] Simple commit: apply edits, resume
-- [ ] Simple Sync fallback (skip to `;` or `}`) so the loop always terminates
-- [ ] CLI: `syntaxrecover file.mc` prints repaired source
+- [x] Controller loop from `design.md` §6 with a **temporary** policy: take the first valid candidate (no ranking yet)
+- [x] Simple commit: apply edits, resume
+- [x] Simple Sync fallback (skip to `;` or `}`) so the loop always terminates
+- [x] CLI: `syntaxrecover file.mc` prints repaired source
 
 *Done when:* the slide example `int main() { int a = 10 if (a > 5) { print(a); } }` is repaired to a parseable program.
 
 **Milestone M2 (Phase 2 review demo):**
-- [ ] Lexer + parser working on a sample set
-- [ ] Error diagnosis shows unexpected vs expected tokens
-- [ ] Candidates generated for 3 different errors
-- [ ] Slide example repaired end to end
-- [ ] Short demo script prepared and rehearsed
+- [x] Lexer + parser working on a sample set
+- [x] Error diagnosis shows unexpected vs expected tokens
+- [x] Candidates generated for 3 different errors
+- [x] Slide example repaired end to end
+- [x] Short demo script prepared and rehearsed
 
 ---
 
