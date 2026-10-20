@@ -57,12 +57,12 @@ You already have the literature review, problem statement, objectives and archit
 ## Phase 2: Lexer, Parser and Candidate Engine  *(about 3 weeks)*
 
 ### 2.1 Lexer (A) — about 3 days
-- [ ] Token types and `Token` class with line, col, index, synthetic flag
-- [ ] Skip whitespace, `//` and `/* */` comments
-- [ ] Keywords vs identifiers, int/float/char/string literals, all operators and delimiters
-- [ ] Unknown characters → `ILLEGAL` token (never crash)
-- [ ] Return a list (random access), ending with `EOF`
-- [ ] Tests: every token type, positions, unterminated comment, empty file
+- [x] Token types and `Token` class with line, col, index, synthetic flag
+- [x] Skip whitespace, `//` and `/* */` comments
+- [x] Keywords vs identifiers, int/float/char/string literals, all operators and delimiters
+- [x] Unknown characters → `ILLEGAL` token (never crash)
+- [x] Return a list (random access), ending with `EOF`
+- [x] Tests: every token type, positions, unterminated comment, empty file
 
 *Done when:* all sample programs tokenize; line/col are correct on a multi-line test.
 
