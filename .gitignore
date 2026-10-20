@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.hypothesis/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project artifacts
+eval/results/*.csv
+eval/results/*.png
+eval/results/*.json
+eval/corpus/valid/*.mc
+syntaxrecover/__pycache__/
+
+# Config overrides (keep defaults in repo, ignore local tweaks)
+local_cfg.toml
