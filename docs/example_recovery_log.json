@@ -1,0 +1,49 @@
+{
+  "source_file": "slide_example.mc",
+  "total_errors": 1,
+  "events": [
+    {
+      "id": 1,
+      "line": 2,
+      "col": 16,
+      "unexpected": "if",
+      "expected": [";", ",", "+", "-", "*", "/", "%", "==", "!=", "<", "<=", ">", ">=", "&&", "||"],
+      "possibly_secondary": false,
+      "candidates": [
+        {
+          "id": "R1",
+          "op": "insert",
+          "edit": "insert ';' before 'if'",
+          "valid": true,
+          "cost": 1.0,
+          "structure_penalty": 0.0,
+          "progress": 15,
+          "score": -1.25,
+          "decision": "accepted"
+        },
+        {
+          "id": "R2",
+          "op": "delete",
+          "edit": "delete 'if'",
+          "valid": false,
+          "reason": "parser stalls after 0 tokens",
+          "decision": "rejected"
+        },
+        {
+          "id": "R3",
+          "op": "sync",
+          "edit": "skip to next ';'",
+          "valid": true,
+          "cost": 10.0,
+          "structure_penalty": 13.0,
+          "progress": 8,
+          "score": 21.8,
+          "decision": "rejected"
+        }
+      ],
+      "chosen": "R1",
+      "explanation": "Inserted ';' after 10 because the statement grammar requires a terminator. Minimal edit cost selected."
+    }
+  ],
+  "repaired_source": "int main() {\n    int a = 10; if (a > 5) { print(a); }\n}\n"
+}

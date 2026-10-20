@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SyntaxRecoverLog",
+  "description": "Machine-readable structured log for SyntaxRecover execution",
+  "type": "object",
+  "required": ["source_file", "total_errors", "events", "repaired_source"],
+  "properties": {
+    "source_file": { "type": "string" },
+    "total_errors": { "type": "integer", "minimum": 0 },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "line",
+          "col",
+          "unexpected",
+          "expected",
+          "candidates",
+          "chosen",
+          "explanation"
+        ],
+        "properties": {
+          "id": { "type": "integer" },
+          "line": { "type": "integer" },
+          "col": { "type": "integer" },
+          "unexpected": { "type": "string" },
+          "expected": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "possibly_secondary": { "type": "boolean", "default": false },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "op", "edit", "valid", "decision"],
+              "properties": {
+                "id": { "type": "string" },
+                "op": { "type": "string", "enum": ["insert", "delete", "replace", "sync"] },
+                "edit": { "type": "string" },
+                "valid": { "type": "boolean" },
+                "cost": { "type": "number" },
+                "structure_penalty": { "type": "number" },
+                "progress": { "type": "integer" },
+                "score": { "type": "number" },
+                "reason": { "type": "string" },
+                "decision": { "type": "string", "enum": ["accepted", "rejected"] }
+              }
+            }
+          },
+          "chosen": { "type": "string" },
+          "explanation": { "type": "string" }
+        }
+      }
+    },
+    "repaired_source": { "type": "string" }
+  }
+}

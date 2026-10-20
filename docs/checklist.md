@@ -35,19 +35,19 @@ You already have the literature review, problem statement, objectives and archit
 - [x] **R1.2 Write the ranking specification** (S)
   Define Edit Cost, Parser Progress Distance, Source Structure Preservation, the score formula, default weights, tie-break order.
   *Done when:* `docs/ranking_spec.md` includes the three slide candidates (R1, R2, R3) calculated by hand with matching numbers.
-- [ ] **R1.3 Define the candidate generation rules precisely** (A)
+- [x] **R1.3 Define the candidate generation rules precisely** (A)
   For each of Insert, Delete, Replace, Sync: exact trigger, position, cost, how placeholders work.
   *Done when:* a teammate could implement it from the document alone.
-- [ ] **R1.4 Hand-trace three errors end to end** (A and S)
+- [x] **R1.4 Hand-trace three errors end to end** (A and S)
   Pick: missing `;` (slide example), missing `)`, extra `}`. Write each step: error event → candidates → validation → ranking → log text.
   *Done when:* three traces saved in `docs/`; they become your first golden tests.
-- [ ] **R1.5 Define the log format** (S)
+- [x] **R1.5 Define the log format** (S)
   Text layout and the JSON schema from `design.md` §5.8.
   *Done when:* schema file exists and one example log is written by hand.
 - [x] **R1.6 Plan the evaluation** (S)
   Metrics, baselines, mutation types, dataset size, hypotheses H1 to H3.
   *Done when:* `docs/evaluation_plan.md` exists.
-- [ ] **R1.7 Mention the risks** from `design.md` §13 in your notes, with the wording you will use for each claim
+- [x] **R1.7 Mention the risks** from `design.md` §13 in your notes, with the wording you will use for each claim
   *Done when:* you have a one-line answer ready for "is the ranking really non-heuristic?" and "what does 100% compliance mean?"
 
 **Milestone M1:** specs complete; the slide example can be calculated by hand with the same numbers as the deck.
