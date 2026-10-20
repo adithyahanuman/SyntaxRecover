@@ -67,13 +67,13 @@ You already have the literature review, problem statement, objectives and archit
 *Done when:* all sample programs tokenize; line/col are correct on a multi-line test.
 
 ### 2.2 Grammar and Parser Adapter (S) — about 5 days
-- [ ] Encode Mini-C in the parser tool's grammar format (`grammar/minic.lark`)
-- [ ] Resolve all shift/reduce conflicts deliberately (dangling else, precedence)
-- [ ] Implement `ParserState` interface: `clone`, `feed`, `expected`, `at_accept`
-- [ ] Build AST nodes (or a tree) with positions; support a `synthetic` flag
-- [ ] Verify `clone()` really isolates state (feeding the clone must not change the original)
-- [ ] Verify `expected()` is correct on 10 hand-picked states (after `int a = 10` expect `;` `,` and operators)
-- [ ] Tests: every valid sample parses; every invalid sample fails at the expected token
+- [x] Encode Mini-C in the parser tool's grammar format (`grammar/minic.lark`)
+- [x] Resolve all shift/reduce conflicts deliberately (dangling else, precedence)
+- [x] Implement `ParserState` interface: `clone`, `feed`, `expected`, `at_accept`
+- [x] Build AST nodes (or a tree) with positions; support a `synthetic` flag
+- [x] Verify `clone()` really isolates state (feeding the clone must not change the original)
+- [x] Verify `expected()` is correct on 10 hand-picked states (after `int a = 10` expect `;` `,` and operators)
+- [x] Tests: every valid sample parses; every invalid sample fails at the expected token
 
 *Done when:* valid programs parse to ASTs; `feed` returns False on bad input without changing state; `expected()` matches your hand-computed sets.
 
