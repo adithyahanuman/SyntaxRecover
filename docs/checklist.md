@@ -8,18 +8,18 @@ Legend: `[ ]` to do, `[x]` done. **A** = Adithya, **S** = Sai (suggested split, 
 
 ## Phase 0: Decisions and Setup  *(about 3 days, before Phase 2)*
 
-- [ ] **0.1 Choose the parser approach** (A and S together)
+- [x] **0.1 Choose the parser approach** (A and S together)
   Option A: Lark LALR interactive parser behind the `ParserState` interface. Option B: your own table-driven parser. Check with your faculty whether a hand-built parser is required for marks.
   *Done when:* decision written at the top of `design.md` §12.
-- [ ] **0.2 Choose the implementation language** (default Python 3)
+- [x] **0.2 Choose the implementation language** (default Python 3)
   *Done when:* decision recorded, and you know how you will call Bison for the baseline (usually a C binary run from Python).
-- [ ] **0.3 Create the repo** with the folder layout from `design.md` §9, `.gitignore`, virtualenv, `requirements.txt`
+- [x] **0.3 Create the repo** with the folder layout from `design.md` §9, `.gitignore`, virtualenv, `requirements.txt`
   *Done when:* both of you can clone, install and run `pytest` green on a trivial test.
-- [ ] **0.4 Agree git workflow:** branch per task, PR or at least a review before merging to `main`, commit messages that name the checklist item
+- [x] **0.4 Agree git workflow:** branch per task, PR or at least a review before merging to `main`, commit messages that name the checklist item
   *Done when:* written in `README.md`.
-- [ ] **0.5 Install Bison/Flex** (or confirm they work on your machine or WSL)
-  *Done when:* a "hello" Bison grammar builds and runs.
-- [ ] **0.6 Set up a shared task tracker** (this file plus GitHub Issues or a simple board)
+ - [ ] **0.5 Install Bison/Flex** (or confirm they work on your machine or WSL)
+   *Done when:* a "hello" Bison grammar builds and runs.
+- [x] **0.6 Set up a shared task tracker** (this file plus GitHub Issues or a simple board)
 
 **Milestone M0:** repo builds, tests run, decisions recorded.
 
@@ -29,10 +29,10 @@ Legend: `[ ]` to do, `[x]` done. **A** = Adithya, **S** = Sai (suggested split, 
 
 You already have the literature review, problem statement, objectives and architecture slides. This phase turns them into precise specifications you can code against.
 
-- [ ] **R1.1 Finalize the Mini-C grammar** (A)
+- [x] **R1.1 Finalize the Mini-C grammar** (A)
   Start from `design.md` §3. Resolve every ambiguity (dangling else, operator precedence, `for` init forms).
   *Done when:* saved as `docs/minic_grammar.md`; 10 valid and 10 invalid sample programs each labelled legal or illegal.
-- [ ] **R1.2 Write the ranking specification** (S)
+- [x] **R1.2 Write the ranking specification** (S)
   Define Edit Cost, Parser Progress Distance, Source Structure Preservation, the score formula, default weights, tie-break order.
   *Done when:* `docs/ranking_spec.md` includes the three slide candidates (R1, R2, R3) calculated by hand with matching numbers.
 - [ ] **R1.3 Define the candidate generation rules precisely** (A)
@@ -44,7 +44,7 @@ You already have the literature review, problem statement, objectives and archit
 - [ ] **R1.5 Define the log format** (S)
   Text layout and the JSON schema from `design.md` §5.8.
   *Done when:* schema file exists and one example log is written by hand.
-- [ ] **R1.6 Plan the evaluation** (S)
+- [x] **R1.6 Plan the evaluation** (S)
   Metrics, baselines, mutation types, dataset size, hypotheses H1 to H3.
   *Done when:* `docs/evaluation_plan.md` exists.
 - [ ] **R1.7 Mention the risks** from `design.md` §13 in your notes, with the wording you will use for each claim
